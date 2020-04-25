@@ -4,7 +4,8 @@ const connect  = require('./config/db');
 
 
 connect();
-
+//initial middleware
+app.use(express.json({extended : false}));
 app.get('/',(req, res)=>{
     res.json('api is work hello world');
 })
