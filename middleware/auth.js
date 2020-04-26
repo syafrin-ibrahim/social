@@ -7,7 +7,7 @@ module.exports = function(req, res, next){
 
     // jika token tidak tersedia
     if(!token){
-        res.status(401).json({ msg : "Anda tidak memiliki toke, authorisasi di tolak"});
+        res.status(401).json({ msg : "Anda tidak memiliki token, authorisasi di tolak"});
     }
 
     //verified token
