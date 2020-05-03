@@ -12,14 +12,14 @@ const config = require('config');
 //@access Private
 router.get('/me', auth, async (req, res)=>{;
     try{
-        const profile = await Profile.findOne({ user : req.user.id }).populate('user',['name', 'avatar']);
+        const profile = await Profile.findOne({ user : req.user.id }).populate('users',['name', 'avatar']);
         if(!profile){
             res.status(400).json({ msg : 'tidak ada profile untuk user ini'});
         }
 
         res.status(200).json(profile);
     }catch(err){
-        console.log(err.message); 
+        console.log('errornya adalah', err.message); 
         res.status(500).send('server error');       
     }
 });

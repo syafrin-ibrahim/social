@@ -2,7 +2,8 @@ import {REGISTER_SUCCESS, REGISTER_FAIL,
         SIGN_IN, SIGN_ERROR,
         LOG_IN_SUCCESS,
         LOG_IN_FAIL,
-        LOG_OUT
+        LOG_OUT,
+        CLEAR_PROFILE
     } from '../actions/types';
 const initialState = {
     token : localStorage.getItem('token'),
@@ -11,7 +12,7 @@ const initialState = {
     user : null
 }
 
-export default function(state= initialState, action){
+export default function auth(state= initialState, action){
 
 const {type, payload} = action;
 
@@ -27,7 +28,7 @@ const {type, payload} = action;
                     case SIGN_IN : 
                         return {
                             ...state,
-                            ...payload,
+                            user : payload,
                             isAuth : true,
                             load: false
                         }

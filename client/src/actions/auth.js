@@ -1,6 +1,6 @@
 import { REGISTER_SUCCESS, REGISTER_FAIL, 
         SIGN_IN, SIGN_ERROR, 
-        LOG_IN_SUCCESS,LOG_IN_FAIL, LOG_OUT} from './types';
+        LOG_IN_SUCCESS,LOG_IN_FAIL, LOG_OUT, CLEAR_PROFILE} from './types';
 import { setAlert } from './alert';
 import axios from 'axios';
 import setAuthToken from '../utils/setAuthToken';
@@ -90,6 +90,8 @@ export const register = ({ name, email, password })=> async dispatch =>  {
 
 // log out user
 export const logout = ()=>dispatch =>  {
+
+    dispatch({ type :  CLEAR_PROFILE});
     dispatch({ type :  LOG_OUT});
    
 }

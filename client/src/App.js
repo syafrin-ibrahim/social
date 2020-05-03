@@ -12,6 +12,8 @@ import store from './store';
 import Alert from './components/layout/Alert';
 import  {loadUser} from './actions/auth';
 import  setAuthToken  from './utils/setAuthToken';
+import Dashboard from './components/dashboard/Dashboard';
+import PrivateRoute from './components/routing/PrivateRoute';
 
 // cek apakh token tersedia
 if(localStorage.token){
@@ -38,6 +40,8 @@ function App() {
           <Route exact path="/" component={Landing} />
           <Route exact path="/regis" component={Regis}/>
           <Route exact path="/login" component={Login}/>
+          <PrivateRoute exact path="/dashboard" component={Dashboard}/>
+
 
         </Switch>
       </section>
