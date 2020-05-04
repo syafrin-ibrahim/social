@@ -2,8 +2,7 @@ import {REGISTER_SUCCESS, REGISTER_FAIL,
         SIGN_IN, SIGN_ERROR,
         LOG_IN_SUCCESS,
         LOG_IN_FAIL,
-        LOG_OUT,
-        CLEAR_PROFILE
+        LOG_OUT
     } from '../actions/types';
 const initialState = {
     token : localStorage.getItem('token'),

@@ -26,7 +26,7 @@ useEffect(()=>{
                 ) : (
                     <Fragment>
                     <p>Profile belum Ada, silahakn isi profile disini</p>
-                    <Link to="create-profile" className="btn btn-primary">create</Link>
+                    <Link to="/create-profile" className="btn btn-primary">create</Link>
                     </Fragment>
                 )
                 
