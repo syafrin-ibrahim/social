@@ -1,10 +1,11 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link, withRouter} from 'react-router-dom';
-import { makeProfile} from '../../actions/profile';
+import { withRouter, Link} from 'react-router-dom';
+import { makeProfile, getProfile} from '../../actions/profile';
+import { STATES } from 'mongoose';
 
-const CreateProfile = ({ makeProfile, history})=>{
+const EditProfile = ({ profile : {profile, load},  makeProfile, getProfile, history})=>{
    const [form, setForm] = useState({
     company: '',
     website: '',
@@ -36,6 +37,27 @@ const CreateProfile = ({ makeProfile, history})=>{
     instagram
     } = form;
 
+    //use effect
+    useEffect(()=>{
+        getProfile();
+
+        setForm({
+            company: load || !profile.company ? '' : profile.company,
+            website: load || !profile.website ? '' : profile.website,
+            location: load || !profile.location ? '' : profile.location,
+            status: load || !profile.status ? '' : profile.status,
+            skills: load || !profile.skills ? '' : profile.skills.join(','),
+            githubusername:
+              load || !profile.githubusername ? '' : profile.githubusername,
+            bio: load || !profile.bio ? '' : profile.bio,
+            twitter: load || !profile.social ? '' : profile.social.twitter,
+            facebook: load || !profile.social ? '' : profile.social.facebook,
+            linkedin: load || !profile.social ? '' : profile.social.linkedin,
+            youtube: load || !profile.social ? '' : profile.social.youtube,
+            instagram: load || !profile.social ? '' : profile.social.instagram
+          });
+    },[load]);
+
     //state unutk toggle sosmed
     const [togle, setTogle] = useState(false);
 
@@ -50,7 +72,7 @@ const CreateProfile = ({ makeProfile, history})=>{
     const handleSubmit = (e)=>{
         //alert('ok siap menyimpan');
         e.preventDefault();
-        makeProfile(form, history);
+        makeProfile(form, history, true);
     }
 
     return(
@@ -111,7 +133,7 @@ const CreateProfile = ({ makeProfile, history})=>{
         </div>
         <div className="form-group">
         <textarea placeholder="A short bio of yourself" name="bio" value={bio} onChange={handleChange}>{bio}
-       </textarea> 
+       </textarea>
         <small class="form-text">Tell us a little about yourself</small>
         </div>
         <div className="my-2">
@@ -146,16 +168,22 @@ const CreateProfile = ({ makeProfile, history})=>{
                 
         </Fragment>}
         <input type="submit" class="btn btn-primary my-1" />
-        <a className="btn btn-light my-1" href="dashboard.html">Go
-       Back</a>
+        <Link className="btn btn-light my-1" to="/dashboard">Go
+       Back</Link>
         </form>
         </Fragment>
        
     )
 }
 
-CreateProfile.propTypes = {
-    makeProfile : PropTypes.func.isRequired
+EditProfile.propTypes = {
+    makeProfile : PropTypes.func.isRequired,
+    getProfile : PropTypes.func.isRequired,
+    profile : PropTypes.object.isRequired
 }
 
-export default connect(null, { makeProfile})(withRouter(CreateProfile));
+const mapStateToProps = state => ({
+    profile : state.profile
+});
+
+export default connect(mapStateToProps, { makeProfile, getProfile})(withRouter(EditProfile));

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import  Spinner from "../layout/Spinner";
 import { PropTypes } from "prop-types";
 import { getProfile } from "../../actions/profile";
+import DashboardAction from "./DashboardAction";
 
 
 const Dashboard = ({ getProfile, auth : { user }, profile : { profile, load } })=>{
@@ -21,7 +22,7 @@ useEffect(()=>{
                 </p>
                 { profile !== null ? (
                     <Fragment>
-                            Profile Ada
+                            <DashboardAction />
                     </Fragment>
                 ) : (
                     <Fragment>
