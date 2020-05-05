@@ -2,7 +2,9 @@ import {REGISTER_SUCCESS, REGISTER_FAIL,
         SIGN_IN, SIGN_ERROR,
         LOG_IN_SUCCESS,
         LOG_IN_FAIL,
-        LOG_OUT
+        LOG_OUT,
+        ACCOUNT_DELETE,
+        CLEAR_PROFILE
     } from '../actions/types';
 const initialState = {
     token : localStorage.getItem('token'),
@@ -44,6 +46,7 @@ const {type, payload} = action;
                     case LOG_IN_FAIL :
                     case SIGN_ERROR : 
                     case LOG_OUT : 
+                    case ACCOUNT_DELETE : 
                         localStorage.removeItem('token');
                         return {
                             ...state,
