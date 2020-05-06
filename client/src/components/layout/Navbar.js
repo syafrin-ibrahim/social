@@ -7,7 +7,7 @@ const Navbar = ({ auth : {isAuth, load}, logout }) => {
 
     const authLink = (
         <ul>
-            <li><a href="profiles.html">Members</a></li>
+             <li><Link to="/profiles">Members</Link></li>
             <li><a href="#!" onClick={logout} >
                 <i className='fas fa-sign-out-alt' />{` `} <span className='hide-sm'>Log-Out</span>
                 </a>
@@ -22,7 +22,7 @@ const Navbar = ({ auth : {isAuth, load}, logout }) => {
 
     const guestLink = (
         <ul>    
-                <li><a href="profiles.html">Members</a></li>
+                <li><Link to="/profiles">Members</Link></li>
                 <li><Link to="/regis" >Register</Link></li>
                 <li><Link to="/login">Login</Link></li>    
         </ul>

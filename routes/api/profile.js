@@ -13,7 +13,7 @@ const Post = require('../../models/Post');
 //@access Private
 router.get('/me', auth, async (req, res)=>{;
     try{
-        const profile = await Profile.findOne({ user : req.user.id }).populate('users',['name', 'avatar']);
+        const profile = await Profile.findOne({ user : req.user.id }).populate('user',['name', 'avatar']);
         if(!profile){
             res.status(400).json({ msg : 'tidak ada profile untuk user ini'});
         }
@@ -93,7 +93,7 @@ router.post('/', [auth, [
 
 router.get('/', async (req, res)=>{
     try{
-        const profiles = await Profile.find().populate('User',['name','avatar']);
+        const profiles = await Profile.find().populate('user',['name','avatar']);
         res.status(200).json(profiles);
     }catch(err){
         console.log(err.message);
@@ -106,7 +106,7 @@ router.get('/', async (req, res)=>{
 //@access Public
 router.get('/user/:user_id', async (req, res)=>{
     try{
-        const profile = await Profile.find({ user : req.params.user_id }).populate('User',['name','avatar']);
+        const profile = await Profile.findOne({ user : req.params.user_id }).populate('user',['name','avatar']);
         if(!profile){
             return res.status(400).json({ msg :  'profile tidak ditemukan'})
         }
