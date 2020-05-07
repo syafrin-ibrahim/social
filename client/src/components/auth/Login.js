@@ -50,7 +50,7 @@ function Login({ login, isAuthenticated}){
                     <input type="password" onChange={handleChange} placeholder="Password" name="password" value={form.password} minLength="6" required/>
                     </div>
                 
-                <input type="submit" className="btn btn-primary" value="Register" />
+                <input type="submit" className="btn btn-primary" value="Sign In" />
                 <p className="my-1">
                 Don't have an account? <Link to="/regis">Sign Up</Link>
                 </p>
