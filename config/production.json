@@ -1,0 +1,6 @@
+{
+    "dbUrl":"mongodb+srv://syafrin:1234@mern-sn6op.mongodb.net/test?retryWrites=true&w=majority",
+    "jwt-secret" : "mysecret-token",
+    "githubClientId" : "1dcf51e24e8c154e3d55",
+    "githubSecret" : "b16ec79036313692de4119056d385945d16bf48c"
+}
