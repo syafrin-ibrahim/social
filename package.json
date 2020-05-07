@@ -2,6 +2,9 @@
   "name": "social",
   "version": "1.0.0",
   "description": "'aplication submission node js'",
+  "engines": {
+    "node": "12.14.x"
+  },
   "main": "app.js",
   "scripts": {
     "start": "node start",
