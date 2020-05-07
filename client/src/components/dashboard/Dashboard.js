@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 import  Spinner from "../layout/Spinner";
 import { PropTypes } from "prop-types";
-import { getProfile, deleteAccount } from "../../actions/profile";
+import { getProfile } from "../../actions/profile";
 import DashboardAction from "./DashboardAction";
 import Experience from './Experience';
 import Education from './Education';
